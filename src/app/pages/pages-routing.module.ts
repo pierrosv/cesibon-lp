@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { Home1Component } from "./dashboard/home1/home1.component";
+import {AboutComponent} from "./extrapages/about/about.component";
 
 const routes: Routes = [
   {
     path: "",
-    component: Home1Component
+    component: AboutComponent
   },
   {
     path: '', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
