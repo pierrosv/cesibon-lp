@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
 import { works, teams, customers, highlights } from './about.model';
 import { worksData, teamData, customersData, highlightsData } from './data';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-about',
@@ -21,7 +22,11 @@ export class AboutComponent implements OnInit {
   customersData!: customers[];
   highlightsData!: highlights[];
 
-  constructor() { }
+  constructor(public translateSrv: TranslateService) {
+    translateSrv.addLangs(['el', 'en']);
+    translateSrv.setDefaultLang('el');
+    translateSrv.use('el')
+  }
 
   ngOnInit(): void {
     /**

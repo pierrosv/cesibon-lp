@@ -8,6 +8,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { MENU } from './menu';
 import { MenuItem } from './menu.model';
+import {LanguageService} from "../../core/services/language.service";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-header',
@@ -30,14 +32,29 @@ export class HeaderComponent implements OnInit {
   submit!: boolean;
   formsubmit!: boolean;
 
+  cookieValue: any;
+  flagvalue: any;
+  countryName: any;
+  valueset: any;
+  listLang: any = [
+    { text: 'English', short: 'EN', flag: 'assets/img/flags/en.png', lang: 'en' },
+    { text: 'Ελληνικά', short: 'GR',  flag: 'assets/img/flags/el.png', lang: 'el' },
+  ];
+
   @ViewChild('sideMenu') sideMenu!: ElementRef;
 
-  constructor(private router: Router,private modalService: NgbModal, private eventService: EventService, private formBuilder: UntypedFormBuilder) {
+  constructor(private router: Router,
+              private modalService: NgbModal,
+              private eventService: EventService,
+              public _cookiesService: CookieService,
+              public languageService: LanguageService,
+              private formBuilder: UntypedFormBuilder) {
     router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.activateMenu();
       }
     });
+
   }
 
   ngOnInit(): void {
@@ -52,6 +69,22 @@ export class HeaderComponent implements OnInit {
     /**
      * Bootstrap validation form data
      */
+    this.cookieValue = this._cookiesService.get('lang');
+    // @ts-ignore
+    const val = this.listLang.filter(x => {
+      return x.lang === this.cookieValue;
+    });
+    // @ts-ignore
+    this.countryName = val.map(element => {
+      return element.text;
+    });
+    if (val.length === 0) {
+      if (this.flagvalue === undefined) { this.valueset = 'assets/images/flags/us.jpg'; }
+    } else {
+      // @ts-ignore
+      this.flagvalue = val.map(element => element.flag);
+    }
+
      this.signUpform = this.formBuilder.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required]],
@@ -60,6 +93,13 @@ export class HeaderComponent implements OnInit {
 
     // Menu Items
     this.menuItems = MENU;
+  }
+
+  setLanguage(text: string, lang: string, flag: string) {
+    this.countryName = text;
+    this.flagvalue = flag;
+    this.cookieValue = lang;
+    this.languageService.setLanguage(lang);
   }
 
    /**

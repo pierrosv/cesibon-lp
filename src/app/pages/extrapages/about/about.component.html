@@ -1,6 +1,6 @@
 <main class="page-wrapper">
   <!-- Header-->
-<!--  <app-header id="top"></app-header>-->
+  <app-header id="top"></app-header>
 
   <div class="container mt-5 mb-md-4 pt-5">
     <!-- Title + Breadcrumb-->
@@ -12,9 +12,8 @@
     <div class="row align-items-center justify-content-center">
       <!-- Hero content-->
       <div class="col-lg-4 col-md-5 col-sm-9 order-md-1 order-2 text-md-start text-center">
-        <h1 class="mb-4">About i-Staff</h1>
-        <p class="mb-4 pb-3 fs-lg">We provide a complete service for the sale, purchase or rental of real estate. We
-          have been operating more than 10 years. Search millions of apartments and houses on Finder.</p><a class="btn btn-lg btn-primary" routerLink="/pages/contacts">Contact us</a>
+        <h1 class="mb-4">{{'ABOUT' | translate }}</h1>
+        <p class="mb-4 pb-3 fs-lg">{{'ABOUT_TEXT'| translate}}</p><a class="btn btn-lg btn-primary" routerLink="/pages/contacts">{{'CONTACT_US' | translate}}</a>
       </div>
       <!-- Hero carousel-->
       <div class="col-lg-7 col-md-6 offset-md-1 col-12 order-md-2 order-1">
@@ -188,44 +187,22 @@
   </section>
 
   <!-- Find property-->
-  <section class="container mb-5 pb-sm-3 pb-lg-4">
-    <div class="bg-secondary rounded-3">
-      <div class="col-md-11 col-12 offset-md-1 p-md-0 p-2 d-flex align-items-center justify-content-between">
-        <div class="me-md-5 py-md-5 px-md-0 p-4" style="max-width: 526px;">
-          <h2 class="mb-md-4">
-            Buy property with confidence. <br>
-            Sell without pressure.
-          </h2>
-          <p class="mb-4 pb-md-3 fs-lg">Amet libero morbi venenatis ut est. Iaculis leo ultricies nunc id ante
-            adipiscing. Vel metus odio at faucibus ac.</p><a class="btn btn-lg btn-primary" routerLink="/catalog/sale"><i class="fi-search me-2"></i>Find property</a>
-        </div>
-        <div class="col-4 d-md-block d-none align-self-end px-0"><img class="mt-n5" src="assets/img/real-estate/about/01.png" width="406" alt="Cover image"></div>
-      </div>
-    </div>
-  </section>
+<!--  <section class="container mb-5 pb-sm-3 pb-lg-4">-->
+<!--    <div class="bg-secondary rounded-3">-->
+<!--      <div class="col-md-11 col-12 offset-md-1 p-md-0 p-2 d-flex align-items-center justify-content-between">-->
+<!--        <div class="me-md-5 py-md-5 px-md-0 p-4" style="max-width: 526px;">-->
+<!--          <h2 class="mb-md-4">-->
+<!--            Buy property with confidence. <br>-->
+<!--            Sell without pressure.-->
+<!--          </h2>-->
+<!--          <p class="mb-4 pb-md-3 fs-lg">Amet libero morbi venenatis ut est. Iaculis leo ultricies nunc id ante-->
+<!--            adipiscing. Vel metus odio at faucibus ac.</p><a class="btn btn-lg btn-primary" routerLink="/catalog/sale"><i class="fi-search me-2"></i>Find property</a>-->
+<!--        </div>-->
+<!--        <div class="col-4 d-md-block d-none align-self-end px-0"><img class="mt-n5" src="assets/img/real-estate/about/01.png" width="406" alt="Cover image"></div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </section>-->
 
-  <!-- Recent posts-->
-  <section class="container mb-5 pb-lg-5">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4 pb-2">
-      <h2 class="h3 mb-sm-0">Our recent highlights</h2><a class="btn btn-link fw-normal ms-sm-3 p-0" routerLink="/pages/blog-grid">Go to blog<i class="fi-arrow-long-right ms-2"></i></a>
-    </div>
-    <ngx-slick-carousel [config]="carouselConfig" class="carousel">
-      @for(data of highlightsData;track $index){
-      <div class=" swiper-slide me-4" ngxSlickItem>
-        <article class="tns-item tns-slide-active">
-          <a class="d-block mb-3" routerLink="/pages/single-blog"><img class="rounded-3" src="{{data.image}}" alt="Post image"></a><a class="fs-xs text-uppercase text-decoration-none" href="javascript:void(0);">{{data.sub_title}}</a>
-          <h3 class="fs-base pt-1"><a class="nav-link" routerLink="/pages/single-blog">{{data.title}}</a></h3><a class="d-flex align-items-center text-decoration-none" href="javascript:void(0);"><img class="rounded-circle" src="{{data.profile}}" width="44" alt="Avatar">
-            <div class="ps-2">
-              <h6 class="fs-sm text-nav lh-base mb-1">{{data.name}}</h6>
-              <div class="d-flex text-body fs-xs"><span class="me-2 pe-1"><i class="fi-calendar-alt opacity-70 mt-n1 me-1 align-middle"></i>{{data.date}}</span><span><i class="fi-chat-circle opacity-70 mt-n1 me-1 align-middle"></i>{{data.comments}} comments</span>
-              </div>
-            </div>
-          </a>
-        </article>
-      </div>
-      }
-    </ngx-slick-carousel>
-  </section>
 
 </main>
 <!-- Footer-->

@@ -10,6 +10,7 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
     ReactiveFormsModule,
     RouterModule,
     NgbDropdownModule,
-    ScrollToModule
+    ScrollToModule,
+    TranslateModule
   ],
   exports: [HeaderComponent, FooterComponent, BreadcrumbsComponent]
 })

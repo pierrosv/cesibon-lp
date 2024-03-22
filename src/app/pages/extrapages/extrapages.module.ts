@@ -19,6 +19,7 @@ import { SingleBlogComponent } from './single-blog/single-blog.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { HelpCenterComponent } from './help-center/help-center.component';
 import { SortByExtraPagesPipe } from '../extrapages/sort-by.pipe';
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { SortByExtraPagesPipe } from '../extrapages/sort-by.pipe';
     // Ng2SearchPipeModule,
     ExtraPagesRoutingModule,
     SharedModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    TranslateModule
   ]
 })
 export class ExtrapagesModule { }
