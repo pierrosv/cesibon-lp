@@ -4,15 +4,16 @@
   <!-- Page container-->
   <div class="container mt-5 mb-md-4 pt-5">
       <!-- Title + Breadcrumb-->
-      <app-breadcrumbs [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+<!--      <app-breadcrumbs [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>-->
   </div>
+
    <!-- Hero-->
    <section class="container mb-5 pb-2 pb-md-4 pb-lg-5">
     <div class="row align-items-md-start align-items-center gy-4">
       <div class="col-lg-5 col-md-6">
         <div class="mx-md-0 mx-auto mb-md-5 mb-4 pb-md-4 text-md-start text-center" style="max-width: 416px;">
-          <h1 class="mb-4">Get in touch!</h1>
-          <p class="mb-0 fs-lg text-muted">Fill out the form and out team will try to get back to you within 24 hours.</p>
+          <h1 class="mb-4">{{'CONTACT_US' | translate}}</h1>
+          <p class="mb-0 fs-lg text-muted">{{'CONTACT_TEXT' | translate}}</p>
         </div><img class="d-block mx-auto" src="assets/img/real-estate/illustrations/contact.svg" alt="Illustration">
       </div>
       <div class="col-md-6 offset-lg-1">
@@ -20,22 +21,38 @@
           <div class="card-body m-1">
             <form class="needs-validation" novalidate (ngSubmit)="validSubmit()" [formGroup]="validationform">
               <div class="mb-4">
-                <label class="form-label" for="c-name">Full Name</label>
+                <label class="form-label" for="c-name">{{'FULL_NAME' | translate}}</label>
                 <input class="form-control form-control-lg" id="c-name" type="text" required formControlName="name" [ngClass]="{'is-invalid': submit && form['name'].errors}">
-                <div class="invalid-tooltip mt-1">Please, enter your name</div>
+                <div class="invalid-tooltip mt-1">{{'MESSAGE_REQUIRED_NAME' | translate}}</div>
               </div>
               <div class="mb-4">
-                <label class="form-label" for="c-email">Your Email</label>
+                <label class="form-label" for="c-email">{{'EMAIL' | translate}}</label>
                 <input class="form-control form-control-lg" id="c-email" type="email" required formControlName="email" [ngClass]="{'is-invalid': submit && form['email'].errors}">
-                <div class="invalid-tooltip mt-1">Please, enter your email</div>
+                <div class="invalid-tooltip mt-1">{{'MESSAGE_REQUIRED_EMAIL' | translate}}</div>
               </div>
               <div class="mb-4">
-                <label class="form-label" for="c-message">Message</label>
-                <textarea class="form-control form-control-lg" id="c-message" rows="4" placeholder="Leave your message" required formControlName="message" [ngClass]="{'is-invalid': submit && form['message'].errors}"></textarea>
-                <div class="invalid-tooltip mt-1">Please, type your message</div>
+                <label class="form-label" for="c-phone">{{'PHONE' | translate}}</label>
+                <input class="form-control form-control-lg" id="c-phone" type="text" formControlName="phone">
+              </div>
+              <div class="mb-4">
+                <label class="form-label" for="c-message">{{'MESSAGE' | translate}}</label>
+                <textarea class="form-control form-control-lg" id="c-message" rows="4" placeholder="{{'MESSAGE' | translate}}" required formControlName="message" [ngClass]="{'is-invalid': submit && form['message'].errors}"></textarea>
+                <div class="invalid-tooltip mt-1">{{'MESSAGE_REQUIRED_MESSAGE' | translate}}</div>
+              </div>
+              <div class="mb-4">
+                <input type="checkbox">
+                <span>&nbsp;</span>
+                <label class="form-label" for="c-message">  {{'MESSAGE_ACCEPT_TERMS1' | translate}} </label>
+                <span>&nbsp;</span>
+                <a href="/pages/terms-of-use">{{'MESSAGE_ACCEPT_TERMS_OF_USE' | translate}}</a>
+                <span>&nbsp;</span>
+                <label class="form-label" for="c-message">  {{'MESSAGE_ACCEPT_TERMS2' | translate}} </label>
+                <span>&nbsp;</span>
+                <a href="/pages/terms-of-use">{{'MESSAGE_ACCEPT_PRIVACY_POLICY' | translate}}</a>
+                <div class="invalid-tooltip mt-1">{{'MESSAGE_REQUIRED_ACCEPTANCE' | translate}}</div>
               </div>
               <div class="pt-sm-2 pt-1">
-                <button class="btn btn-lg btn-primary w-sm-auto w-100" type="submit">Submit form</button>
+                <button class="btn btn-lg btn-primary w-sm-auto w-100" type="submit">{{'SUBMIT_FORM' | translate}}</button>
               </div>
             </form>
           </div>
@@ -47,22 +64,22 @@
   <section class="container mb-5 pb-2 pb-md-4 pb-lg-5">
     <div class="row g-4">
       <!-- Item-->
-      <div class="col-md-4"><a class="icon-box card card-hover h-100" href="mailto:example@email.com">
+      <div class="col-md-4"><a class="icon-box card card-hover h-100" href="mailto:i-staff@gmail.com">
           <div class="card-body">
-            <div class="icon-box-media text-primary rounded-circle shadow-sm mb-3"><i class="fi-mail"></i></div><span class="d-block mb-1 text-body">Drop us a line</span>
-            <h3 class="h4 icon-box-title mb-0 opacity-90">example&#64;email.com</h3>
+            <div class="icon-box-media text-primary rounded-circle shadow-sm mb-3"><i class="fi-mail"></i></div><span class="d-block mb-1 text-body">{{'DROP_US_AN_EMAIL' | translate}}</span>
+            <h3 class="h4 icon-box-title mb-0 opacity-90">i-staff&#64;gmail.com</h3>
           </div></a></div>
       <!-- Item-->
       <div class="col-md-4"><a class="icon-box card card-hover h-100" href="tel:4065550120">
           <div class="card-body">
-            <div class="icon-box-media text-primary rounded-circle shadow-sm mb-3"><i class="fi-device-mobile"></i></div><span class="d-block mb-1 text-body">Call us any time</span>
-            <h3 class="h4 icon-box-title mb-0 opacity-90">(406) 555-0120</h3>
+            <div class="icon-box-media text-primary rounded-circle shadow-sm mb-3"><i class="fi-device-mobile"></i></div><span class="d-block mb-1 text-body">{{'CALL_US' | translate}}</span>
+            <h3 class="h4 icon-box-title mb-0 opacity-90">+30 210 9999999</h3>
           </div></a></div>
       <!-- Item-->
       <div class="col-md-4"><a class="icon-box card card-hover h-100" href="javascript:void(0);">
           <div class="card-body">
-            <div class="icon-box-media text-primary rounded-circle shadow-sm mb-3"><i class="fi-instagram"></i></div><span class="d-block mb-1 text-body">Follow us</span>
-            <h3 class="h4 icon-box-title mb-0 opacity-90">&#64;finder_directory</h3>
+            <div class="icon-box-media text-primary rounded-circle shadow-sm mb-3"><i class="fi-instagram"></i></div><span class="d-block mb-1 text-body">{{'FOLLOW_US_INSTAGRAM' | translate}}</span>
+            <h3 class="h4 icon-box-title mb-0 opacity-90">&#64;istaff_instagram</h3>
           </div></a></div>
     </div>
   </section>
