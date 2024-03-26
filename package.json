@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "^17.0.6",
     "@angular/router": "^17.0.6",
     "@angular/youtube-player": "^17.0.3",
+    "@halloverden/ngx-cookiebot": "^3.1.0",
     "@ng-bootstrap/ng-bootstrap": "^16.0.0",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",

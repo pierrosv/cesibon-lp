@@ -10,6 +10,8 @@ import { OrderByPipe } from './order-by.pipe';
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {CookiebotConfig} from "../cookiebot.config";
+import {NgxCookiebotModule} from "@halloverden/ngx-cookiebot";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -22,6 +24,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     OrderByPipe
   ],
   imports: [
+    NgxCookiebotModule.forRoot(CookiebotConfig),
     BrowserModule,
     AppRoutingModule,
     PagesModule,
