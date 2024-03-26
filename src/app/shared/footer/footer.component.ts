@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
+import {GoogleAnalyticsService} from "../../core/services/google-analytics.service";
 
 @Component({
   selector: 'app-footer',
@@ -12,10 +13,12 @@ import {TranslateService} from "@ngx-translate/core";
  */
 export class FooterComponent implements OnInit {
   year: number = 2024;
-  constructor(public translateSrv: TranslateService) {
+  constructor(public translateSrv: TranslateService,
+              private googleAnalyticsSrv: GoogleAnalyticsService) {
     translateSrv.addLangs(['el', 'en']);
     translateSrv.setDefaultLang('el');
     translateSrv.use('el')
+    this.googleAnalyticsSrv.trackEvent('footer loaded', 'footer loaded', 'load');
   }
 
   ngOnInit(): void {
