@@ -25,7 +25,11 @@ export class ContactsComponent implements OnInit {
 
   constructor(private formBuilder: UntypedFormBuilder,
               private translateSrv: TranslateService,
-              private contactSrv: ContactService) { }
+              private contactSrv: ContactService) {
+    translateSrv.addLangs(['el', 'en']);
+    translateSrv.setDefaultLang('el');
+    translateSrv.use('el')
+  }
 
   ngOnInit(): void {
     /**

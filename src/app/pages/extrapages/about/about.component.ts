@@ -23,6 +23,7 @@ export class AboutComponent implements OnInit {
   highlightsData!: highlights[];
 
   constructor(public translateSrv: TranslateService) {
+    //TODO: When navigating from About --> Contact it ignores the selected language
     translateSrv.addLangs(['el', 'en']);
     translateSrv.setDefaultLang('el');
     translateSrv.use('el')
