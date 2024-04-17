@@ -10,6 +10,7 @@ import { HelpCenterComponent } from "./help-center/help-center.component"
 import {TermsOfUseComponent} from "./terms-of-use/terms-of-use.component";
 import {PrivacyPolicyComponent} from "./privacy-policy/privacy-policy.component";
 import {CookiePolicyComponent} from "./cookie-policy/cookie-policy.component";
+import {BrochureElComponent} from "./brochure-el/brochure-el.component";
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: "help-center",
     component: HelpCenterComponent
+  },
+  {
+    path: "brochure-el",
+    component: BrochureElComponent
   }
 ];
 
