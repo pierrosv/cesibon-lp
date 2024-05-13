@@ -4,6 +4,7 @@ import {ContactService} from "../../../core/services/contact.service";
 import {ContactUsModel} from "../../../core/models/contactUsModel";
 import Swal from "sweetalert2";
 import {TranslateService} from "@ngx-translate/core";
+import {GoogleAnalyticsService} from "../../../core/services";
 
 @Component({
   selector: 'app-contacts',
@@ -25,10 +26,12 @@ export class ContactsComponent implements OnInit {
 
   constructor(private formBuilder: UntypedFormBuilder,
               private translateSrv: TranslateService,
+              private googleAnalyticsSrv: GoogleAnalyticsService,
               private contactSrv: ContactService) {
     translateSrv.addLangs(['el', 'en']);
     translateSrv.setDefaultLang('el');
-    translateSrv.use('el')
+    translateSrv.use('el');
+    this.googleAnalyticsSrv.trackEvent('contact_us_page_loaded', 'contact us page loaded', 'page_load');
   }
 
   ngOnInit(): void {
@@ -76,9 +79,9 @@ export class ContactsComponent implements OnInit {
     contactUs.email = this.validationform.get('email')?.value;
     contactUs.phone = this.validationform.get('phone')?.value;
     contactUs.message = this.validationform.get('message')?.value;
-
     this.contactSrv.sendContactUsMessage(contactUs).subscribe(x=> {
       if (x) {
+        this.googleAnalyticsSrv.trackEvent('contact_us_message_send', 'contact us msg send', 'message');
         Swal.fire({
           icon: 'success',
           title: this.translateSrv.instant('SUCCESS_PROCESS'),
@@ -90,6 +93,7 @@ export class ContactsComponent implements OnInit {
         });
       }
       else {
+        this.googleAnalyticsSrv.trackEvent('contact_us_message_failed', 'contact us msg failed', 'message');
         Swal.fire({
           icon: 'error',
           title: this.translateSrv.instant('FAILED_PROCESS'),
@@ -102,6 +106,10 @@ export class ContactsComponent implements OnInit {
       }
 
     });
+  }
+
+  contact_media_clicked(media: string) {
+    this.googleAnalyticsSrv.trackEvent(media + '_button_pressed', 'contact us page button pressed: ' + media , 'user_action');
   }
 
   /**

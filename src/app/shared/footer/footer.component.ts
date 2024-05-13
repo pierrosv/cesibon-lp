@@ -18,7 +18,7 @@ export class FooterComponent implements OnInit {
     translateSrv.addLangs(['el', 'en']);
     translateSrv.setDefaultLang('el');
     translateSrv.use('el')
-    this.googleAnalyticsSrv.trackEvent('footer loaded', 'footer loaded', 'load');
+    this.googleAnalyticsSrv.trackEvent('footer_loaded', 'footer loaded', 'page_load');
   }
 
   ngOnInit(): void {
@@ -41,6 +41,10 @@ export class FooterComponent implements OnInit {
   SidebarHide() {
     document.getElementById('demo-switcher')?.classList.remove('show');
     document.querySelector('.vertical-overlay')?.classList.remove('show');
+  }
+
+  social_media_clicked(media: string) {
+    this.googleAnalyticsSrv.trackEvent(media + '_social_media_pressed', 'footer social media pressed: ' + media , 'user_action');
   }
 
 }

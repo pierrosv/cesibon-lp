@@ -3,6 +3,7 @@ import { SlickCarouselComponent } from 'ngx-slick-carousel';
 import { works, teams, customers, highlights } from './about.model';
 import { worksData, teamData, customersData, highlightsData } from './data';
 import {TranslateService} from "@ngx-translate/core";
+import {GoogleAnalyticsService} from "../../../core/services";
 
 @Component({
   selector: 'app-about',
@@ -22,11 +23,13 @@ export class AboutComponent implements OnInit {
   customersData!: customers[];
   highlightsData!: highlights[];
 
-  constructor(public translateSrv: TranslateService) {
+  constructor(public translateSrv: TranslateService,
+              private googleAnalyticsSrv: GoogleAnalyticsService) {
     //TODO: When navigating from About --> Contact it ignores the selected language
     translateSrv.addLangs(['el', 'en']);
     translateSrv.setDefaultLang('el');
-    translateSrv.use('el')
+    translateSrv.use('el');
+    this.googleAnalyticsSrv.trackEvent('about_us_page_loaded', 'about us page loaded', 'page_load');
   }
 
   ngOnInit(): void {

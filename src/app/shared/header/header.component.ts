@@ -10,6 +10,7 @@ import { MENU } from './menu';
 import { MenuItem } from './menu.model';
 import {LanguageService} from "../../core/services/language.service";
 import {CookieService} from "ngx-cookie-service";
+import {GoogleAnalyticsService} from "../../core/services";
 
 @Component({
   selector: 'app-header',
@@ -48,6 +49,7 @@ export class HeaderComponent implements OnInit {
               private eventService: EventService,
               public _cookiesService: CookieService,
               public languageService: LanguageService,
+              private googleAnalyticsSrv: GoogleAnalyticsService,
               private formBuilder: UntypedFormBuilder) {
     router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -100,6 +102,7 @@ export class HeaderComponent implements OnInit {
     this.flagvalue = flag;
     this.cookieValue = lang;
     this.languageService.setLanguage(lang);
+    this.googleAnalyticsSrv.trackEvent('changed_lang_' + lang, 'changed lang to ' + lang, 'user_action');
   }
 
    /**
